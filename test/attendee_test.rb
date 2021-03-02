@@ -9,7 +9,7 @@ class AttendeeTest < Minitest::Test
   end
   
   def test_attributes
-    #require 'pry'; binding.pry
+  
     assert_equal @attendee.name, "Megan"
     assert_equal @attendee.budget, 50
 
