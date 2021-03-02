@@ -15,10 +15,11 @@ class AuctionTest < Minitest::Test
     @attendee1 = Attendee.new(name: 'Megan', budget: '$50')
     @attendee2 = Attendee.new(name: 'Bob', budget: '$75')
     @attendee3 = Attendee.new(name: 'Mike', budget: '$100')
+  
   end
   
   def test_attributes
-    #require 'pry'; binding.pry
+    #
     assert_equal @auction.items, []
     @auction.add_item(@item1)
     @auction.add_item(@item2)
@@ -58,7 +59,6 @@ class AuctionTest < Minitest::Test
     @item1.add_bid(@attendee1, 22)
     @item1.add_bid(@attendee2, 20)
     @item4.add_bid(@attendee3, 50)
-    #require 'pry'; binding.pry
     assert_equal @auction.unpopular_items, [@item2, @item3, @item5]
     @item3.add_bid(@attendee2, 15)
     assert_equal @auction.unpopular_items, [@item2, @item5]
@@ -66,6 +66,15 @@ class AuctionTest < Minitest::Test
   end
 
   def test_potential_rev
+    @auction.add_item(@item1)
+    @auction.add_item(@item2)
+    @auction.add_item(@item3)
+    @auction.add_item(@item4)
+    @auction.add_item(@item5)
+    @item1.add_bid(@attendee1, 22)
+    @item1.add_bid(@attendee2, 20)
+    @item4.add_bid(@attendee3, 50)
+    @item3.add_bid(@attendee2, 15)
     assert_equal @auction.potential_revenue, 87
   end
 end

@@ -1,8 +1,9 @@
 class Item
-  attr_reader :name, :bids
+  attr_reader :name, :bids, :current_high_bid
   def initialize(name)
     @name = name
     @bids = {}
+    @current_high_bid = current_high_bid
   end
 
   def add_bid(name, bid)
@@ -10,7 +11,8 @@ class Item
   end
 
   def current_high_bid
-    @bids.max_by{|bid| bid[1]}[1]
-  
+    if @bids != {}
+      @bids.max_by{|bid| bid[1]}[1]
+    end
   end
 end
