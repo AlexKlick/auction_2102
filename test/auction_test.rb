@@ -47,7 +47,6 @@ class AuctionTest < Minitest::Test
     assert_equal @item1.bids, {}
     @item1.add_bid(@attendee1, 22)
     @item1.add_bid(@attendee2, 20)
-    #require 'pry'; binding.pry
     assert_equal @item1.current_high_bid, 22
   end
   def test_unpopular
@@ -58,7 +57,8 @@ class AuctionTest < Minitest::Test
     @auction.add_item(@item5)
     @item1.add_bid(@attendee1, 22)
     @item1.add_bid(@attendee2, 20)
-    @item4.add_bid(attendee3, 50)
+    @item4.add_bid(@attendee3, 50)
+    #require 'pry'; binding.pry
     assert_equal @auction.unpopular_items, [@item2, @item3, @item5]
     @item3.add_bid(@attendee2, 15)
     assert_equal @auction.unpopular_items, [@item2, @item5]
@@ -66,6 +66,6 @@ class AuctionTest < Minitest::Test
   end
 
   def test_potential_rev
-    assert_equal auction.potential_revenue, 87
+    assert_equal @auction.potential_revenue, 87
   end
 end
