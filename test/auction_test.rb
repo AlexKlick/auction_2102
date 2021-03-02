@@ -14,5 +14,7 @@ class AuctionTest < Minitest::Test
     @auction.add_item(@item1)
     @auction.add_item(@item2)
     assert_equal auction.items, [@item1, @item2]
+    assert_equal auction.items_names, [@item1.name, @item2.name]
+   
   end
 end
