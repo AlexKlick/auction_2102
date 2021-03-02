@@ -1,15 +1,17 @@
 require "minitest/autorun"
 require "minitest/pride"
 require './lib/item'
+require './lib/attendee'
 class AttendeeTest < Minitest::Test
 
   def setup
-    @item1 = Item.new('Chalkware Piggy Bank')
-    @item2 = Item.new('Bamboo Picture Frame')
+    @attendee = Attendee.new(name: 'Megan', budget: '$50')
   end
   
   def test_attributes
-    assert_equal @item1.name, "Chalkware Piggy Bank"
+    #require 'pry'; binding.pry
+    assert_equal @attendee.name, "Megan"
+    assert_equal @attendee.budget, 50
 
   end
 end

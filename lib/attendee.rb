@@ -1,5 +1,7 @@
  class Attendee
-   def initialize
-     
-   end
+  attr_reader :name, :budget
+  def initialize(data_hash)
+     @name = data_hash[:name]
+     @budget = data_hash[:budget][1..2].to_i
+  end
  end
