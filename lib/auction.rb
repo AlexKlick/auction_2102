@@ -1,7 +1,8 @@
  class Auction
-  attr_reader :items
+  attr_reader :items, :bidders
    def initialize
     @items = []
+    @bidder = []
    end
    def add_item(item)
     @items << item
@@ -19,5 +20,8 @@
     @items[0].current_high_bid
     @items.each{|item| rev += item.current_high_bid.to_i}
     rev
+  end
+  def bidders
+    @items.flat_map{|item| item.bids.map{|bid|bid[0].name}}.uniq
   end
  end

@@ -77,4 +77,17 @@ class AuctionTest < Minitest::Test
     @item3.add_bid(@attendee2, 15)
     assert_equal @auction.potential_revenue, 87
   end
+  def test_bidders
+    @auction.add_item(@item1)
+    @auction.add_item(@item2)
+    @auction.add_item(@item3)
+    @auction.add_item(@item4)
+    @auction.add_item(@item5)
+    @item1.add_bid(@attendee1, 22)
+    @item1.add_bid(@attendee2, 20)
+    @item4.add_bid(@attendee3, 50)
+    @item3.add_bid(@attendee2, 15)
+    assert_equal @auction.bidders, ["Megan", "Bob", "Mike"]
+    #assert_equal auction.bidder_info, {@attendee1 => {@attendee1.budget, [@attendee1.items]} }
+  end
 end
